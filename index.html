@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>random meal search</title>
+    <style>
+        *{
+            text-transform: capitalize;
+            text-align: center;
+           
+        }
+        body{
+            padding: 40px;
+        }
+
+        .main{
+          
+            width: 350px;
+            height: auto;
+            padding: 20px;
+          border-radius: 20px;
+          box-shadow: 0.5px 0.5px 0.5px 2px rgb(29, 19, 19);
+            position: absolute;
+            top: 30%;
+            left: 38%;
+
+        }
+        button{
+            width: 90%;
+            padding: 10px;
+            background-color: green;
+            outline: none;
+            border: none;
+            margin-left: 17x;
+            color: white;
+            margin: 10px;
+        }
+
+        .meal img{
+            position: relative;
+            height: auto;
+            width: 300px;
+        }
+        
+    </style>
+</head>
+<body>
+
+
+    <div class="main">
+
+        <h1> random meal genrator</h1>
+
+        <button onclick="change()"> genrate random meal</button>
+
+        <div id="empty"></div>
+
+    </div>
+
+
+    <script>
+
+        function change(){
+            let dish = document.getElementById("empty");
+            dish.innerHTML="";
+
+            fetch("https://www.themealdb.com/api/json/v1/1/random.php")
+            .then(Response => Response.json())
+            .then(data => {
+                console.log(data);
+
+
+                let mealdiv = document.createElement("div")
+                mealdiv.classList.add('meal')
+
+
+                mealdiv.innerHTML=
+                `<h3>${data.meals[0].strMeal}</h3>
+                <img src="${data.meals[0].strMealThumb}">
+                <p>${data.meals[0].strInstructions}</p>
+                `
+
+                dish.appendChild(mealdiv);
+            }).catch()
+             
+        }
+
+    </script>
+
+
+</body>
+</html>
