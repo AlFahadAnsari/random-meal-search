@@ -82,7 +82,9 @@
                 `
 
                 dish.appendChild(mealdiv);
-            }).catch()
+            }).catch(error => {
+                console.error("error facting data: ", error)
+            });
              
         }
 
