@@ -84,8 +84,12 @@
                 dish.appendChild(mealdiv);
             }).catch(error => {
                 console.error("error facting data: ", error)
-            });
+            }).finally(() => {
+                console.log("thanks for visit")
+         });
              
+          
+
         }
 
     </script>
